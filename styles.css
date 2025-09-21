@@ -1,0 +1,111 @@
+/* 全局样式补充 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 链接样式 */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    /* 移动端侧边栏调整 */
+    #sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none !important;
+        border-bottom: 1px solid var(--sidebar-border);
+    }
+    
+    /* 移动端主内容区调整 */
+    main {
+        margin-left: 0;
+        padding: 40px 20px;
+    }
+    
+    /* 移动端网格布局调整 */
+    #research-topics {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 论文图片在移动端调整高度 */
+    #publications-list img {
+        height: 200px !important;
+    }
+    
+    /* 减少移动端间距 */
+    section {
+        margin-bottom: 40px;
+    }
+}
+
+/* 论文卡片悬停效果 */
+#publications-list > div,
+#project-experiences-list > div {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#publications-list > div:hover,
+#project-experiences-list > div:hover {
+    transform: translateY(-2px);
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 图片加载过渡 */
+img {
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease;
+}
+
+img:not(.loaded) {
+    opacity: 0;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* 论文图片容器 - 修复选择器语法错误 */
+#publications-list .md\:w-1\/6 {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 150px;
+}
+
+/* 侧边栏滚动条美化 */
+#sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(74, 85, 104, 0.3);
+    border-radius: 20px;
+}
+
+/* 论文图片悬停效果 */
+#publications-list img:hover {
+    transform: scale(1.02);
+}
+
+/* 在styles.css中添加以下样式 */
+.highlighted-author {
+    font-weight: 600;
+    color: var(--text-main);
+}

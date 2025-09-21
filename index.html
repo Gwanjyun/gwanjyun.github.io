@@ -1,60 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>Junyuan Deng</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 高端学术色调配置：低饱和蓝灰体系 -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .profile {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        .links {
-            margin-top: 20px;
-        }
-        .links a {
-            margin: 0 10px;
-            color: #165DFF;
-            text-decoration: none;
+        :root {
+            --bg-main: #f5f7fa;        /* 主背景：极浅蓝灰，柔和不刺眼 */
+            --bg-sidebar: #eef0f4;     /* 侧边栏：浅蓝灰，比主背景略深 */
+            --text-main: #2c3e50;      /* 主文字：深靛蓝，专业感强 */
+            --text-light: #4a5568;     /* 次要文字：中灰蓝 */
+            --accent: #3b6291;         /* 强调色：低饱和深蓝，克制而高级 */
+            --accent-hover: #2d4d76;   /* 强调色hover：加深10% */
+            --border: #dce1e8;         /* 边框：淡蓝灰，精致分隔 */
+            --card-bg: #ffffff;        /* 卡片背景：纯白，突出内容 */
+            --sidebar-border: #dce1e8; /* 侧边栏边框：与内容区分 */
         }
     </style>
 </head>
-<body>
-    <header>
-        <img src="https://picsum.photos/200" alt="个人头像" class="profile">
-        <h1>你好，我是XXX</h1>
-        <p>这里是我的个人简介，介绍我的兴趣、技能或工作等</p>
-        <div class="links">
-            <a href="https://github.com/你的用户名">GitHub</a>
-            <a href="mailto:你的邮箱">邮箱</a>
-            <a href="https://博客地址">博客</a>
-        </div>
-    </header>
+<body class="bg-[var(--bg-main)] text-[var(--text-main)] font-sans antialiased">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- 左侧固定区域 - 高端学术风格 -->
+        <aside id="sidebar" class="bg-[var(--bg-sidebar)] text-[var(--text-light)] md:w-64 md:fixed md:h-screen p-6 flex flex-col border-r border-[var(--sidebar-border)] transition-all duration-300">
+            <!-- 个人头像：精致边框 -->
+            <div class="mb-6 text-center">
+                <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-2 border-[var(--accent)]/20">
+                    <img id="profile-image" src="" alt="个人照片" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- 个人名称和职位：精致排版 -->
+            <div class="mb-8 text-center">
+                <h1 id="name" class="text-2xl font-semibold mb-2 text-[var(--accent)] tracking-tight"></h1>
+                <p id="title" class="text-[var(--text-light)] text-sm"></p>
+            </div>
+            
+            <!-- 个人简介：优雅行高 -->
+            <div class="mb-8 flex-grow">
+                <h2 class="text-base font-medium mb-3 border-b border-[var(--border)] pb-1 text-[var(--accent)] uppercase tracking-wide text-xs">关于我</h2>
+                <p id="bio" class="text-sm leading-relaxed"></p>
+            </div>
+            
+            <!-- 联系方式：极简设计 -->
+            <div class="mb-6">
+                <h2 class="text-base font-medium mb-3 border-b border-[var(--border)] pb-1 text-[var(--accent)] uppercase tracking-wide text-xs">联系方式</h2>
+                <ul id="contact-list" class="space-y-2 text-sm">
+                    <!-- 联系方式将通过JS从config加载 -->
+                </ul>
+            </div>
+            
+            <!-- CV下载：高级按钮 -->
+            <div class="mt-auto">
+                <a id="cv-link" href="#" class="inline-block w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-medium py-2 px-4 rounded-sm text-center transition duration-300 flex items-center justify-center text-sm shadow-sm">
+                    <i class="fa fa-file-pdf-o mr-2"></i> 下载CV
+                </a>
+            </div>
+        </aside>
 
-    <section>
-        <h2>关于我</h2>
-        <p>可以在这里详细介绍自己，比如教育背景、工作经历、项目经验等。</p>
-    </section>
+        <!-- 右侧内容区域：学术内容展示 -->
+        <main class="flex-grow md:ml-64 p-6 md:p-12">
+            <!-- 研究方向 -->
+            <section id="research" class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6 text-[var(--text-main)] border-b border-[var(--border)] pb-2 tracking-tight">研究方向</h2>
+                <div id="research-topics" class="grid md:grid-cols-2 gap-6">
+                    <!-- 研究方向将通过JS从config加载 -->
+                </div>
+            </section>
 
-    <section>
-        <h2>项目</h2>
-        <ul>
-            <li><a href="项目链接1">项目1</a> - 项目描述</li>
-            <li><a href="项目链接2">项目2</a> - 项目描述</li>
-        </ul>
-    </section>
+            <!-- 项目经历（原科研项目） -->
+            <section id="project-experiences" class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6 text-[var(--text-main)] border-b border-[var(--border)] pb-2 tracking-tight">项目经历</h2>
+                <div id="project-experiences-list" class="space-y-6">
+                    <!-- 项目经历将通过JS从config加载 -->
+                </div>
+            </section>
+            
+            <!-- 发表论文 -->
+            <section id="publications" class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6 text-[var(--text-main)] border-b border-[var(--border)] pb-2 tracking-tight">发表论文</h2>
+                <div id="publications-list" class="space-y-8">
+                    <!-- 论文将通过JS从config加载 -->
+                </div>
+            </section>
+            
+            <!-- 工作经历 -->
+            <section id="experience" class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6 text-[var(--text-main)] border-b border-[var(--border)] pb-2 tracking-tight">工作经历</h2>
+                <div id="experience-timeline" class="space-y-10">
+                    <!-- 工作经历将通过JS从config加载 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 引入配置文件 -->
+    <script src="config.js"></script>
+    <!-- 引入主脚本 -->
+    <script src="script.js"></script>
 </body>
 </html>
+    
