@@ -343,6 +343,13 @@ section { padding: 32px 0; }
 /* 奇数张卡片时最后一张横跨整行，避免网格出现空白格 */
 .grid-2 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 
+/* 三列布局：最后一行不满 3 张时让末张卡片加宽，避免右侧留空白格。
+   4 张（余 1）→ 末张跨 3 列；5 张（余 2）→ 末张跨 2 列；6 张 → 正好两行不变。
+   用 :has() 精确判断最后一个子元素在 3 列网格中的位置；
+   旧浏览器忽略此规则，退化为普通网格，不影响内容可读性。 */
+.grid-3:has(> :last-child:nth-child(3n + 1)):not(:has(> :nth-child(6))) > :last-child { grid-column: 1 / -1; }
+.grid-3:has(> :last-child:nth-child(3n + 2)) > :last-child { grid-column: span 2; }
+
 .card { background: var(--bg-card); padding: 24px; transition: background .2s; }
 .card:hover { background: var(--bg-soft); }
 .card .chip {

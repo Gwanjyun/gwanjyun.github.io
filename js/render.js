@@ -272,19 +272,25 @@
       { ic: '✉️', tt: 'Email', ss: p.email, href: p.email ? 'mailto:' + p.email : '' },
       { ic: '🐙', tt: 'GitHub', ss: p.githubHandle || p.github, href: p.github },
       { ic: '🎓', tt: 'Google Scholar', ss: p.scholarHandle, href: p.scholar },
+      { ic: '📞', tt: '电话', ss: p.phone, href: p.phone ? 'tel:' + p.phone.replace(/\s/g, '') : '' },
+      { ic: '📍', tt: '办公地点', ss: p.office, href: '' },
       { ic: '📚', tt: 'DBLP', ss: p.dblpHandle, href: p.dblp },
       { ic: '📝', tt: '微博', ss: p.weiboHandle, href: p.weibo },
       { ic: '🎬', tt: 'Bilibili', ss: p.bilibiliHandle, href: p.bilibili }
     ];
     var box = el('contactCards');
     if (box) {
-      var items = defs.filter(function (d) { return d.ss && d.href; });
+      // 有链接的走 <a>，纯文本信息（如办公地点）走 <div>
+      var items = defs.filter(function (d) { return d.ss; });
       box.innerHTML = items.map(function (d) {
-        var ext = d.href.indexOf('http') === 0;
+        var ext = d.href && d.href.indexOf('http') === 0;
+        var inner = '<span class="ic">' + d.ic + '</span>' +
+          '<div><div class="tt">' + esc(d.tt) + '</div><div class="ss">' + esc(d.ss) + '</div></div>';
+        if (!d.href) {
+          return '<div class="contact-card reveal">' + inner + '</div>';
+        }
         return '<a class="contact-card reveal" href="' + esc(d.href) + '"' +
-          (ext ? ' target="_blank" rel="noopener"' : '') + '>' +
-          '<span class="ic">' + d.ic + '</span>' +
-          '<div><div class="tt">' + esc(d.tt) + '</div><div class="ss">' + esc(d.ss) + '</div></div></a>';
+          (ext ? ' target="_blank" rel="noopener"' : '') + '>' + inner + '</a>';
       }).join('');
     }
 
