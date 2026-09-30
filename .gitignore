@@ -2,6 +2,11 @@
 .preview/
 *.local
 
+# 本地内容管理后台：只在本机运行，不发布到公开站点
+# （GitHub Pages 是纯静态托管，密码挡不住真正想进的人）
+tools/
+.backups/
+
 # 系统文件
 .DS_Store
 Thumbs.db
