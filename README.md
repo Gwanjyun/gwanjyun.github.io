@@ -29,7 +29,11 @@ AIGC 算法工程师个人主页 —— 纯静态站点，直接托管在 GitHub
 
 ## 可视化后台（推荐）
 
-不想手动改 JSON 的话，用本地后台填表即可：
+不想手动改 JSON 的话，用本地后台填表即可。
+
+**双击 `tools\启动后台.bat`** —— 会自动找到 Node、挑一个空闲端口、打开浏览器。
+
+也可以在命令行启动：
 
 ```bash
 node tools/serve.mjs
@@ -46,11 +50,17 @@ node tools/serve.mjs
   （保留最近 20 份），可随时手动恢复
 - 没启动服务时也能用：点「导出 JSON」下载后覆盖 `data/content.json`
 
-保存后发布：
+## 发布上线
+
+**双击 `tools\发布上线.bat`** —— 会自动校验 JSON、显示改动、提交并推送。
+
+也可以手动执行：
 
 ```bash
 git add -A && git commit -m "更新内容" && git push
 ```
+
+推送后 GitHub Actions 自动部署，约 1 分钟生效（刷新时按 `Ctrl+F5`）。
 
 ### 两个标签页的数据关系
 
