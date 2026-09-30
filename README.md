@@ -91,7 +91,8 @@ npx serve .
 | 字段 | 作用 |
 | --- | --- |
 | `profile` | 姓名、头衔、简介、邮箱、GitHub / Scholar 等链接 |
-| `about` | 首页 Hero 文案与四个统计数字 |
+| `about` | 首页大标题与小字标签 |
+| `stats` | 首页统计数字的**计算规则**（见下） |
 | `work_experience` | 工作经历卡片 |
 | `project_experience` | 首页项目经历卡片 |
 | `research` | 研究方向卡片 |
@@ -99,6 +100,30 @@ npx serve .
 | `awards` | 荣誉与任职 |
 | `projects` | 项目页卡片（`link` 有值则整卡可点） |
 | `posts` | 博客文章（`content` 用 `\n` 分段） |
+
+### 首页统计（自动计算）
+
+首页三个统计数字**不需要手填**，由 `stats` 自动算出：
+
+```json
+"stats": {
+  "startYear": 2024,
+  "fields": [
+    { "label": "年 AI 研究经验", "type": "yearsSince", "source": "startYear" },
+    { "label": "公开出版物 / 文章", "type": "count", "source": "publications" },
+    { "label": "项目经历", "type": "count", "source": "project_experience" }
+  ]
+}
+```
+
+两种计算类型：
+
+- `yearsSince` —— 当前年份 − `source` 指向的年份，**每年自动 +1**
+- `count` —— 数 `source` 指向的数组长度
+
+想加一项，往 `fields` 里加一条即可，列数会自动适配；
+`label` 是显示文字，`source` 可以是 `publications`、`research`、`projects`、
+`posts`、`awards`、`work_experience`、`project_experience` 等任意数组字段。
 
 新增一篇文章：在 `posts` 数组里加一个对象即可，列表页与 `post.html?id=N` 会自动生效
 （N 为数组下标，从 0 开始）。
