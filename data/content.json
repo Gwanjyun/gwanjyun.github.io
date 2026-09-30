@@ -1,0 +1,223 @@
+{
+  "profile": {
+    "name": "邓钧元",
+    "nameEn": "Junyuan Deng",
+    "title": "AIGC 算法工程师",
+    "tagline": "AIGC · 图像与视频生成 · 图像超分辨",
+    "bio": "中山大学信息与通信工程硕士，现任荣耀影像算法部预研组算法工程师，主攻 AIGC 图像与视频生成。在图像超分辨、图像编辑与视频生成方向有深入研究和落地实践，主导并落地荣耀 AIGC 大王影像系列与分身 Live 等项目；以第一作者在计算机视觉顶级会议 CVPR 2025 发表论文，另有论文投稿 NeurIPS 2026 与 ECCV 2026。深耕 LoRA 微调、控制条件注入、强化学习后训练，熟悉 Diffusers、Transformers、Accelerate 等开发框架。",
+    "email": "dengjy27@mail2.sysu.edu.cn",
+    "github": "https://github.com/Gwanjyun",
+    "githubHandle": "Gwanjyun",
+    "scholar": "https://scholar.google.com/citations?user=SsG0abgAAAAJ",
+    "scholarHandle": "Google 学术主页",
+    "dblp": "",
+    "dblpHandle": "",
+    "weibo": "",
+    "weiboHandle": "",
+    "bilibili": "",
+    "bilibiliHandle": "",
+    "headline": "AIGC 算法工程师 · 图像超分辨 · 视频编辑 · 图像编辑",
+    "photo": ""
+  },
+
+  "about": {
+    "eyebrow": "AIGC · Image & Video · Super-Resolution",
+    "heroText": "把文生图大模型，用到真实的影像修复与生成里。",
+    "years": 3,
+    "publications": 3,
+    "projects": 2,
+    "stars": 0
+  },
+
+  "work_experience": [
+    {
+      "company": "荣耀终端股份有限公司",
+      "role": "影像算法工程师（预研组）",
+      "period": "2024.07 — 至今",
+      "desc": "参与荣耀 AIGC 图像视频算法预研，负责前沿论文调研、模型微调。",
+      "tags": ["AIGC", "超分", "图像编辑", "视频编辑"]
+    }
+  ],
+
+  "project_experience": [
+    {
+      "title": "荣耀 AIGC 大王影像（第一代）",
+      "role": "预研 / 核心算法",
+      "period": "2024.07 — 2024.12",
+      "desc": "荣耀云端第一代长焦拍摄超清算法，落地荣耀手机全系列。",
+      "detail": "以文生图大模型 Flux 为基础，搭载 ControlNet 轻量化适配器，依托手机退化域数据集训练 DDIM 生成模型。算法清晰度优于竞品，68% 优于或持平 vivo x200Pro，71% 优于或持平小米 14U。相关技术以第一作者发表于 CVPR 2025。",
+      "link": "",
+      "tags": ["Flux", "ControlNet", "超分"]
+    },
+    {
+      "title": "荣耀 AIGC 大王影像——地标增强（第二代）",
+      "role": "预研 / 核心算法",
+      "period": "2025.01 — 2025.12",
+      "desc": "针对生成式幻觉提出基于数据库检索的有参增强超分辨算法。",
+      "detail": "借助 LLM 中 RAG 技术从高清数据库检索参考图，采用 SigLip2 图像编码器、In-Context 条件注入、不同 LoRA 特征提取并增加 Registers Token，以感知损失与 GAN 损失训练单步模型；收集 600K 组数据。算法 98% 场景优于上一代、95% 优于或持平 vivo x200U。相关成果第一作者投稿 NeurIPS 2026。",
+      "link": "",
+      "tags": ["RAG", "SigLip2", "LoRA", "单步生成"]
+    }
+  ],
+
+  "research": [
+    {
+      "index": "01",
+      "category": "IMAGE",
+      "title": "图像超分辨率",
+      "desc": "面向手机长焦拍摄的图像超清算法，将文生图大模型应用于真实退化域的超分辨增强，解决传统算法细节不足与仿真退化不对齐问题。",
+      "tags": ["Super-Resolution", "Diffusion", "Flux", "LoRA"]
+    },
+    {
+      "index": "02",
+      "category": "AGENT",
+      "title": "智能体驱动的世界知识检索",
+      "desc": "受 LLM 中 RAG 技术启发，构建智能体从互联网检索与低清图对齐的高清参考图，借助外部世界知识缓解生成式幻觉。",
+      "tags": ["Agent", "RAG", "Retrieval"]
+    },
+    {
+      "index": "03",
+      "category": "CONTROL",
+      "title": "扩散模型的可控生成",
+      "desc": "研究控制条件的注入方式与轻量化适配，在保持生成质量的同时降低训练与推理成本，让大模型可控地服务于具体影像任务。",
+      "tags": ["ControlNet", "Diffusion Transformer", "LoRA"]
+    }
+  ],
+
+  "publications": [
+    {
+      "year": "2025",
+      "type": "CVPR",
+      "title": "Acquire and then Adapt: Squeezing out Text-to-Image Model for Image Super-Resolution",
+      "authors": [
+        { "name": "Junyuan Deng", "me": true },
+        { "name": "et al." }
+      ],
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025",
+      "badges": ["第一作者", "CCF-A"],
+      "detail": "提出“先获取、再适配”的两阶段框架，把文生图大模型的能力迁移到真实退化域的超分辨率任务中，在手机长焦场景取得优于竞品的清晰度表现。",
+      "link": ""
+    },
+    {
+      "year": "2025",
+      "type": "ICCV",
+      "title": "OminiControl: Minimal and Universal Control for Diffusion Transformer",
+      "authors": [
+        { "name": "Zhenxiong Tan" },
+        { "name": "Songhua Liu" },
+        { "name": "Xingyi Yang" },
+        { "name": "et al." }
+      ],
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV), 2025 — Highlight",
+      "badges": ["Highlight", "开源"],
+      "detail": "面向 Diffusion Transformer 的极简通用控制框架，以极小的参数开销实现多种条件的统一注入。",
+      "link": "https://github.com/Gwanjyun/OminiControl"
+    },
+    {
+      "year": "2026",
+      "type": "NeurIPS",
+      "title": "World-Knowledge Retrieval for Hallucination-Free Image Super-Resolution",
+      "authors": [
+        { "name": "Junyuan Deng", "me": true },
+        { "name": "et al." }
+      ],
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS), 2026 — 投稿中",
+      "badges": ["第一作者", "审稿中"],
+      "detail": "基于数据库检索的有参增强超分辨算法，借助世界知识缓解生成式幻觉，95% 场景优于或持平 vivo x200U。",
+      "link": ""
+    }
+  ],
+
+  "awards": [
+    {
+      "title": "学术发表",
+      "desc": "以第一作者在计算机视觉顶级会议 CVPR 2025 发表论文，另有两篇论文投稿 NeurIPS 2026 与 ECCV 2026（均为一作/二作评审中）。"
+    },
+    {
+      "title": "工程落地",
+      "desc": "主导并落地荣耀 AIGC 大王影像系列（第一代、第二代地标增强），算法落地荣耀手机全系列，综合效果优于主流竞品。"
+    },
+    {
+      "title": "开源贡献",
+      "desc": "参与 OminiControl（ICCV 2025 Highlight）等开源项目，并维护 PyTorch 自定义算子与体素近邻查询等工程工具库。"
+    }
+  ],
+
+  "projects": [
+    {
+      "category": "CVPR 2025",
+      "title": "Acquire & Adapt · 图像超分辨",
+      "desc": "以文生图大模型为基础的真实退化域超分框架，把预训练生成先验“获取”并“适配”到手机长焦超清任务。",
+      "meta": "第一作者 · 核心算法",
+      "tags": ["Flux", "ControlNet", "DDIM"],
+      "link": ""
+    },
+    {
+      "category": "落地产品",
+      "title": "荣耀 AIGC 大王影像",
+      "desc": "荣耀云端长焦超清算法，第一代落地全系列机型；第二代引入世界知识检索解决生成式幻觉。",
+      "meta": "预研 / 核心算法 · 2024—2025",
+      "tags": ["AIGC", "超分", "产品落地"],
+      "link": ""
+    },
+    {
+      "category": "NeurIPS 2026",
+      "title": "WorldSR · 世界知识检索超分",
+      "desc": "用 LLM 的 RAG 思路从高清数据库检索参考图，结合 SigLip2 与 In-Context 注入，单步生成高质量结果。",
+      "meta": "第一作者 · 投稿中",
+      "tags": ["RAG", "SigLip2", "单步生成"],
+      "link": ""
+    },
+    {
+      "category": "ICCV 2025 Highlight",
+      "title": "OminiControl",
+      "desc": "面向 Diffusion Transformer 的极简通用控制框架，以最小改动实现通用条件控制。",
+      "meta": "参与贡献 · 开源",
+      "tags": ["Diffusion Transformer", "Control", "开源"],
+      "link": "https://github.com/Gwanjyun/OminiControl"
+    },
+    {
+      "category": "工程工具",
+      "title": "torch_knnquery",
+      "desc": "基于体素网格的 PyTorch k 近邻查询实现，为点云与体素场景提供高效近邻检索。",
+      "meta": "开源库",
+      "tags": ["PyTorch", "KNN", "CUDA"],
+      "link": "https://github.com/Gwanjyun/torch_knnquery"
+    },
+    {
+      "category": "工程工具",
+      "title": "torch_cpp_extension_cn",
+      "desc": "面向中文读者的 PyTorch C++ / CUDA 自定义算子扩展示例教程仓库。",
+      "meta": "开源教程",
+      "tags": ["PyTorch", "C++", "CUDA"],
+      "link": "https://github.com/Gwanjyun/torch_cpp_extension_cn"
+    }
+  ],
+
+  "posts": [
+    {
+      "category": "论文",
+      "date": "2025-06",
+      "minutes": 8,
+      "title": "把文生图大模型压进图像超分：Acquire and then Adapt",
+      "excerpt": "文生图模型见过海量高清图像，但直接拿来做超分并不work。这篇文章记录我们如何“先获取、再适配”，让它真正服务于手机长焦的真实退化场景。",
+      "content": "文生图扩散模型在训练中见过海量高清图像，天然携带强大的图像先验。但把这种先验直接拿来做超分辨率，效果往往并不理想——原因在于训练域与真实退化域之间存在明显错位。\n\n我们提出“先获取、再适配”（Acquire and then Adapt）的两阶段思路：第一阶段让模型充分“获取”预训练扩散模型中的生成先验，第二阶段再针对手机长焦的真实退化域做轻量化适配。\n\n具体的工程实现上，我们以 Flux 作为基础模型，搭载轻量化的 ControlNet 适配器，并构建了手机退化域数据集来训练 DDIM 生成模型。相比直接微调，这种解耦式的训练策略显著降低了训练成本，同时保留了大模型的生成能力。\n\n最终算法在清晰度上优于竞品：68% 的场景优于或持平 vivo x200Pro，71% 优于或持平小米 14U，并已落地荣耀手机全系列。相关工作以第一作者发表于 CVPR 2025。"
+    },
+    {
+      "category": "项目",
+      "date": "2025-01",
+      "minutes": 6,
+      "title": "荣耀地标增强：用世界知识解决生成式幻觉",
+      "excerpt": "生成模型在重建地标建筑时容易“编造”细节。我们借助 LLM 中的 RAG 思路，让模型从高清数据库中检索真实参考，把幻觉压下去。",
+      "content": "生成式超分模型有一个固有问题：当低清图像信息不足时，模型会“编造”细节。对于地标建筑这类具有强语义约束的对象，这种幻觉尤其明显——塔尖的形状、窗棂的排布一旦编错，用户一眼就能看出来。\n\n我们的思路来自 LLM 中的 RAG（检索增强生成）：既然语言模型可以通过检索外部知识来减少胡说，图像生成是否也能检索外部的“世界知识”？\n\n具体做法是构建一个检索智能体，从高清地标数据库中检索与低清图对齐的参考图，再通过 SigLip2 图像编码器提取特征，以 In-Context 的方式注入生成过程；同时为不同地标训练独立的 LoRA 分支做特征提取，并引入 Registers Token 稳定注意力。\n\n训练上以感知损失与 GAN 损失联合优化，把多步扩散蒸馏为单步模型，共收集 600K 组训练数据。最终 98% 的场景优于上一代算法，95% 优于或持平 vivo x200U。相关成果已第一作者投稿 NeurIPS 2026。"
+    },
+    {
+      "category": "随笔",
+      "date": "2024-12",
+      "minutes": 5,
+      "title": "预研算法工程师的日常：从论文到产品的距离",
+      "excerpt": "在工业界做预研，和在实验室做研究是两件事。记录一些关于“能跑通”与“能落地”之间差距的观察。",
+      "content": "博士或硕士期间做研究，评价标准通常是“在基准数据集上比 SOTA 高多少”。但到了工业界的预研组，评价标准变成了“在真实用户的场景下，能不能稳定给出更好的结果”。\n\n这两者之间的差距，远比想象中大。仿真退化与真实退化不对齐、算力预算与延迟约束、不同机型的硬件差异、极端场景下的鲁棒性……每一项都可能让一个在论文里表现优异的算法彻底失效。\n\n我的体会是：做预研不能只盯着指标，要尽早把算法放进真实的评测链路里。构建一个贴近真实退化的数据集、找到能代表用户体感的评价方式，往往比再刷高一个点的 PSNR 更有价值。\n\n另一个体会是关于沟通。算法同学需要能把自己的方案讲清楚“为什么有效”，而不只是“效果更好”。当你能用一句话解释清楚方法的动机，方案被采纳的概率会高很多。"
+    }
+  ]
+}
