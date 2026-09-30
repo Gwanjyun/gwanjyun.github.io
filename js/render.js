@@ -83,11 +83,8 @@
       avEmail.href = 'mailto:' + (p.email || '');
     }
 
-    // 统计
-    setCounter('statYears', a.years);
-    setCounter('statPubs', a.publications);
-    setCounter('statProjects', a.projects);
-    setCounter('statStars', a.stars);
+    // 统计（自动计算，见 renderStats）
+    renderStats(c);
 
     // 研究方向
     var rc = el('researchCards');
@@ -130,12 +127,61 @@
     triggerReveal();
   }
 
-  function setCounter(id, value) {
-    var node = el(id);
-    if (!node) return;
-    var v = value || 0;
-    node.textContent = v;
-    node.dataset.count = v;
+  /* ---------- 首页统计：全部自动计算 ----------
+     规则来自 c.stats.fields，支持两种类型：
+       count       数某个数组的长度
+       yearsSince  当前年份 − 指定年份（随时间自动增长）
+     未配置 stats 时，回退到 about 里的手填值，保证兼容旧数据。 */
+  function renderStats(c) {
+    var host = el('statsRow');
+    if (!host) return;
+
+    var cfg = c.stats || {};
+    var fields = Array.isArray(cfg.fields) ? cfg.fields : [];
+
+    // 兼容：没有 stats 配置时用 about 的旧字段
+    if (!fields.length) {
+      var a = c.about || {};
+      fields = [
+        { label: '年 AI 研究经验', type: 'value', value: a.years },
+        { label: '公开出版物 / 文章', type: 'value', value: a.publications },
+        { label: '项目经历', type: 'value', value: a.projects }
+      ];
+    }
+
+    var html = fields.map(function (f) {
+      var v = computeStat(f, cfg, c);
+      return '<div class="stat-card">' +
+        '<div class="num" data-count="' + v + '">' + v + '</div>' +
+        '<div class="lbl">' + esc(f.label || '') + '</div>' +
+        '</div>';
+    }).join('');
+
+    host.innerHTML = html;
+    // 列数跟随卡片数量，保证分隔线均匀
+    host.style.setProperty('--stat-cols', Math.max(1, fields.length));
+  }
+
+  function computeStat(field, cfg, c) {
+    var type = field.type || 'value';
+
+    if (type === 'count') {
+      var arr = c[field.source];
+      return Array.isArray(arr) ? arr.length : 0;
+    }
+
+    if (type === 'yearsSince') {
+      // source 指向 stats 内的字段（如 startYear），也兼容直接写数字
+      var start = field.source === 'startYear' || field.source === undefined
+        ? cfg.startYear
+        : (typeof field.source === 'number' ? field.source : cfg[field.source]);
+      start = parseInt(start, 10);
+      if (isNaN(start)) return 0;
+      var now = new Date().getFullYear();
+      return Math.max(0, now - start);
+    }
+
+    return field.value || 0;
   }
 
   // ---------- 研究 ----------

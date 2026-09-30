@@ -25,11 +25,16 @@
 
   "about": {
     "eyebrow": "AIGC · Image & Video · Super-Resolution",
-    "heroText": "把文生图大模型，用到真实的影像修复与生成里。",
-    "years": 5,
-    "publications": 3,
-    "projects": 3,
-    "stars": 0
+    "heroText": "把文生图大模型，用到真实的影像修复与生成里。"
+  },
+
+  "stats": {
+    "startYear": 2024,
+    "fields": [
+      { "label": "年 AI 研究经验", "type": "yearsSince", "source": "startYear" },
+      { "label": "公开出版物 / 文章", "type": "count", "source": "publications" },
+      { "label": "项目经历", "type": "count", "source": "project_experience" }
+    ]
   },
 
   "work_experience": [

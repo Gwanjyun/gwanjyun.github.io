@@ -311,10 +311,11 @@ section { padding: 32px 0; }
 .section-head p { color: var(--ink-dim); max-width: 580px; font-size: .97rem; }
 .section-foot { margin-top: 22px; }
 
-/* ---------- 统计条 ---------- */
+/* ---------- 统计条 ----------
+   列数由卡片数量决定（JS 写入 --stat-cols），这样增删统计项都不用改 CSS */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--stat-cols, 4), 1fr);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -559,9 +560,13 @@ section { padding: 32px 0; }
   .hero { padding: 32px 0 24px; }
   .hero-grid { grid-template-columns: 1fr; gap: 30px; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  /* 移动端统计改为两列；用 nth-child 处理任意卡片数量的分隔线 */
   .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .stat-card:nth-child(2) { border-right: none; }
-  .stat-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .stat-card { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat-card:nth-child(2n) { border-right: none; }
+  .stat-card:last-child { border-bottom: none; }
+  /* 最后一行只有一个时，横跨整行 */
+  .stat-card:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
   .nav-links {
     position: fixed;
     top: var(--nav-h);
