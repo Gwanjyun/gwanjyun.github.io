@@ -122,6 +122,7 @@
       featured.innerHTML = c.posts.slice(0, 3).map(function (post) {
         return postHtml(post, c.posts.indexOf(post));
       }).join('');
+      toggleSection('postsSection', c.posts.length > 0);
     }
 
     triggerReveal();
@@ -227,9 +228,17 @@
           '<h3>' + esc(aw.title || '') + '</h3>' +
           '<p>' + esc(aw.desc || '') + '</p></div>';
       }).join('');
+      // 没有内容时连同标题一起隐藏，避免留下空板块
+      toggleSection('awardsSection', c.awards.length > 0);
     }
 
     triggerReveal();
+  }
+
+  // 按是否有内容显示/隐藏整个板块（含其标题）
+  function toggleSection(sectionId, show) {
+    var sec = el(sectionId);
+    if (sec) sec.hidden = !show;
   }
 
   // ---------- 项目 ----------
